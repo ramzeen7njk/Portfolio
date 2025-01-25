@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    transition: background-color 0.3s ease-in-out, 
+                color 0.3s ease-in-out, 
+                border-color 0.3s ease-in-out, 
+                box-shadow 0.3s ease-in-out;
+  }
+
+  :root {
+    --background: theme('colors.background.light');
+    --text: theme('colors.text.light');
+    --primary: theme('colors.primary.light');
+    --secondary: theme('colors.secondary.light');
+    --surface: theme('colors.surface.light');
+  }
+
+  :root[class='dark'] {
+    --background: theme('colors.background.dark');
+    --text: theme('colors.text.dark');
+    --primary: theme('colors.primary.dark');
+    --secondary: theme('colors.secondary.dark');
+    --surface: theme('colors.surface.dark');
+  }
+
+  /* Theme Switch Animation */
+  .theme-switch-enter {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  .theme-switch-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .theme-switch-exit {
+    opacity: 1;
+  }
+  .theme-switch-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Accounts for fixed navbar height */
+  }
+}
+
+/* Add this to enhance theme toggle button animation */
+.theme-toggle-icon {
+  transform-origin: center;
+  animation: rotateIcon 0.5s ease-in-out;
+}
+
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.8);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Update the Navbar theme toggle button */
+
+/* Calendar Styles */
+.react-calendar {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #4F46E5;
+  border-radius: 0.5rem;
+  font-family: inherit;
+}
+
+.react-calendar__tile {
+  color: #F8FAFC;
+  padding: 0.75rem;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #F8FAFC;
+}
+
+.react-calendar__tile--active {
+  background-color: #6366F1 !important;
+  color: white !important;
+}
+
+.react-calendar__tile--now {
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+.react-calendar__navigation button {
+  color: #F8FAFC;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: rgba(99, 102, 241, 0.2);
+}
+
+.react-calendar__month-view__weekdays {
+  color: #6366F1;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #EC4899;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #64748B;
+}
+
+/* Add these styles to your existing CSS */
+@layer components {
+  .image-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  .theme-image-transition {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+}
